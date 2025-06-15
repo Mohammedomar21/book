@@ -17,16 +17,18 @@ class HomeRepoImpl extends HomeRepo {
     required this.homeLocalDataSource,
   });
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks() async {
+  Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks({int pageNumber=0}) async {
     try {
       List<BookEntity> books=[];
-      books = await homeRemoteDataSource.fetchFeaturedBooks();
+
       books = homeLocalDataSource.fetchFeaturedBooks();
+
       if (books.isEmpty) {
 
         return right(books);
 
       }
+      books = await homeRemoteDataSource.fetchFeaturedBooks();
 
 
       return right(books);

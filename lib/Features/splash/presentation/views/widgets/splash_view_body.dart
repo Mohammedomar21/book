@@ -52,9 +52,10 @@ class _SplashViewBodyState extends State<SplashViewBody>
     animationController.forward();
   }
 
-  void navigateToHome(var con) {
+  void navigateToHome(BuildContext con) {
     Future.delayed(const Duration(seconds: 3), () {
-      GoRouter.of(con).push(AppRouter.kHomeView);
+      GoRouter.of(con).go(AppRouter.kHomeView);
     });
   }
+
 }

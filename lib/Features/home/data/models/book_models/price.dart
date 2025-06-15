@@ -1,12 +1,12 @@
 class Price {
-  final double amount;
-  final String currencyCode;
+  final double? amount;
+  final String? currencyCode;
 
-  Price({required this.amount, required this.currencyCode});
+  Price({this.amount, this.currencyCode});
 
   factory Price.fromJson(Map<String, dynamic> json) => Price(
-    amount: (json['amount'] ?? json['amountInMicros'] / 1000000).toDouble(),
-    currencyCode: json['currencyCode'],
+    amount: (json['amount'] is num) ? (json['amount'] as num).toDouble() : null,
+    currencyCode: json['currencyCode'] as String?,
   );
 
   Map<String, dynamic> toJson() => {

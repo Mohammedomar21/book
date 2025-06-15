@@ -1,16 +1,16 @@
 class ImageLinks {
-  final String smallThumbnail;
-  final String thumbnail;
+  final String? thumbnail;
+  final String? smallThumbnail;
 
-  ImageLinks({required this.smallThumbnail, required this.thumbnail});
+  ImageLinks({this.thumbnail, this.smallThumbnail});
 
   factory ImageLinks.fromJson(Map<String, dynamic> json) => ImageLinks(
-    smallThumbnail: json['smallThumbnail'],
-    thumbnail: json['thumbnail'],
+    thumbnail: json['thumbnail'] as String?,
+    smallThumbnail: json['smallThumbnail'] as String?,
   );
 
   Map<String, dynamic> toJson() => {
-    'smallThumbnail': smallThumbnail,
     'thumbnail': thumbnail,
+    'smallThumbnail': smallThumbnail,
   };
 }
